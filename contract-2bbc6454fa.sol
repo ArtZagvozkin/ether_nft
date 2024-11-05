@@ -2,15 +2,19 @@
 // Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.22;
 
-import "@openzeppelin/contracts@5.1.0/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts@5.1.0/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts@5.1.0/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ZagvozkinArtemPavlovich is ERC721, ERC721URIStorage, Ownable {
     constructor(address initialOwner)
         ERC721("ZagvozkinArtemPavlovich", "ZAPNFT")
         Ownable(initialOwner)
     {}
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://vk.com/artzagvozkin";
+    }
 
     function safeMint(address to, uint256 tokenId, string memory uri)
         public
